@@ -1,0 +1,32 @@
+.job {
+    display: inline-block;
+    width: 45%; /* Adjust the width as needed */
+    margin: 2vh; /* Add some margin between job listings */
+    padding: 2vh;
+    font-family: "Poppins", sans-serif;
+    color: #193948;
+    background-color: #fcdc73; /* Example background color */
+    border-radius: 1vh;
+    box-shadow: -3px 3px 1px 0px darkgrey;
+}
+.job h2:hover {
+    font-family: "Poppins", sans-serif;
+    color: #4fadc0;
+}
+h1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    font-family: sans-serif;
+    font-weight:900;
+    font-style:normal;
+    color: #193948;
+}
+
+/* Adjustments for smaller screens */
+@media only screen and (max-width: 768px) {
+    .job {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
