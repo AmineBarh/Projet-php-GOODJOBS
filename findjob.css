@@ -1,13 +1,16 @@
+body{
+    background-color: #f4f7f5;
+}
 .job {
     display: inline-block;
-    width: 45%; /* Adjust the width as needed */
+    width: 20%; /* Adjust the width as needed */
     margin: 2vh; /* Add some margin between job listings */
     padding: 2vh;
+    background-color: white;
     font-family: "Poppins", sans-serif;
     color: #193948;
-    background-color: #fcdc73; /* Example background color */
+     /* Example background color */
     border-radius: 1vh;
-    box-shadow: -3px 3px 1px 0px darkgrey;
 }
 .job h2:hover {
     font-family: "Poppins", sans-serif;
@@ -23,6 +26,17 @@ h1{
     font-style:normal;
     color: #193948;
 }
+.company-info {
+    display: flex; /* Use flexbox to align items in one line */
+    align-items: center; /* Align items vertically */
+}
+
+.company-info img {
+    width: 50px; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some space between the image and text */
+}
+
 
 /* Adjustments for smaller screens */
 @media only screen and (max-width: 768px) {
