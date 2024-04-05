@@ -79,8 +79,6 @@ $thisjob = "SELECT jobname, companyname, jobtype, remote, jobdesc, image FROM jo
 $itself = $cnx->query($thisjob);
 // Extraire (fetch) toutes les lignes (enregistrement, rows)
 $alljobs = $itself -> fetchAll(); // Ceci est un tableau de tableaux associatifs
-$all = count($alljobs);
-echo "Il y $all étudiants ";
 
 ?>
 </body>
