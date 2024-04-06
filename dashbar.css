@@ -1,101 +1,44 @@
-html {
-  scroll-behavior: smooth;
-  overflow: hidden;
-  margin: -1vh;
+body{
+  margin: 0vh;
+}
+#bardash {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-between;
+  background-color: hsl(46, 96%, 72%);
+  height: 7vh;
+  padding: 0vh 4vh; 
 }
 
-@media only screen and (min-width: 1200px) {
-  #bardash {
-    display: flex;
-    flex-direction: row;
-    align-items: center; 
-    justify-content: space-between;
-    background-color: #FCDC73;
-    height: 7vh;
-    padding: 0vh 4vh; 
-  }
+.links {
+  display: flex; /* Add flex display */
+  flex-direction: row; /* Set flex direction to row */
+  align-items: center; /* Center items vertically */
+  justify-content: stretch;
+}
 
-  .links {
-    display: flex;
-    gap: 15vh;
-    margin: auto; 
-  }
-  #bardash a {
+.links a {
+  margin: 0 8vh; /* Adjust the horizontal margin between the links */
+}
+
+#bardash a {
   font-family: "Poppins", sans-serif;
   color: #193948;
   text-decoration: none;
-  }
-
-  #bardash a:hover {
-    text-decoration: none;
-    color: #4FADC0;
-  }
-  img{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
 }
 
+#bardash a:hover {
+  text-decoration: none;
+  color: #4FADC0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media only screen and (max-width: 1200px) {
-  #bardash{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #FCDC73;
-    height: 12vh;
-  }
-  #bardash a{
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    color: #193948;
-    text-decoration: none;
-  }
-  #bardash a:hover{
-    text-decoration: none;
-    color: #4FADC0;
-  }
+img {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+  * {
+    scrollbar-width: none;
+    scrollbar-color: #fcdc73 #193948;
   }
