@@ -22,6 +22,10 @@ try {
 <?php include "justheader.php"; ?> 
 
 <h1>JOB LISTINGS</h1>
+<div class="div1">
+    <h2 class="anotherheader">UX Design - Product Design - Service Design - </h2>
+</div>
+
 
 <?php
 
@@ -33,12 +37,9 @@ if (count($alljobs) > 0) {
         echo "<p><strong>Company:</strong></p>";
         echo "<img src='data:image/jpeg;base64,".base64_encode($job['image'])."' />";
         echo "<p>{$job['companyname']}</p>";
-        // Displaying image from database directly might impact performance
-        // Consider storing image path in the database and serving images from filesystem or CDN
-        echo "</div>"; // Close company-info
+        echo "</div>";
         echo "<p><strong>Type:</strong> {$job['jobtype']}</p>";
         echo "<p><strong>Remote:</strong> {$job['remote']}</p>";
-        // Add functionality to view job description when button is clicked
         echo "<button class='show-description' data-desc='{$job['jobdesc']}'>See description</button>";
         echo "</div>";
     }

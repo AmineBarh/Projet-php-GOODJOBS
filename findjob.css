@@ -1,20 +1,34 @@
 body{
     background-color: #f4f7f5;
 }
-.job {
+
+body {
+  background-color: #14213D;
+  
+}
+
+.job{
     display: inline-block;
-    width: 20%; /* Adjust the width as needed */
-    margin: 2vh; /* Add some margin between job listings */
+    width: 20%; 
+    margin: 2vh; 
     padding: 2vh;
-    background-color: white;
-    font-family: "Poppins", sans-serif;
-    color: #193948;
-     /* Example background color */
     border-radius: 1vh;
+    backdrop-filter: blur(13px) saturate(149%);
+    -webkit-backdrop-filter: blur(13px) saturate(149%);
+    background-color: #111928ad;
+    border-radius: 12px;
+    border: 1px solid #ffffff20;
 }
 .job h2:hover {
     font-family: "Poppins", sans-serif;
     color: #4fadc0;
+}
+p, h2{
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+strong{
+  color: #4fadc0;
 }
 h1{
     display: flex;
@@ -27,20 +41,38 @@ h1{
     color: #193948;
 }
 .company-info {
-    display: flex; /* Use flexbox to align items in one line */
-    align-items: center; /* Align items vertically */
+    display: flex; 
+    align-items: center; 
 }
 
 .company-info img {
-    width: 50px; /* Set a fixed width for the image */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Add some space between the image and text */
+    width: 50px; 
+    height: auto; 
+    margin-right: 10px; 
 }
+.job button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: calc(131.2515106201172 * var(--rpx)); 
+    height: calc(14 * var(--rpx));
+    margin: calc(47.99992752075195 * var(--rpx)) 0 0 calc(84.52001953125 * var(--rpx)); 
+    color: #171716;
+    font-weight: 500;
+    background: #4793AF; 
+    border: 2px solid #171716; 
+    border-radius: 4px; 
+  }
+  
+  .job button:hover {
+    background: #171716;
+    color: #ffffff;
+  }
 
 
-/* Adjustments for smaller screens */
 @media only screen and (max-width: 768px) {
     .job {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%; 
     }
 }

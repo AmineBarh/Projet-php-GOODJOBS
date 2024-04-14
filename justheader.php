@@ -13,12 +13,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php
+    session_start();
+
+    if(!isset($_SESSION['user_id'])) {
+        header('Location: login.php');
+        exit;
+    }
+    include "coonexion.php";
+
+    $user_id = $_SESSION['user_id'];
+    $stmt = $cnx->prepare("SELECT * FROM webuser WHERE id = ?");
+    $stmt->execute([$user_id]);
+    $user = $stmt->fetch();
+
+    ?>
     <div id="bardash">
-        <div class="links">
-            <a href="findjob.php"><h4>Find Jobs</h4></a> 
-            <a href="myjob.php"><h4>My jobs</h4></a>
+    <div class="main-container">
+      <div class="link-ellipse"></div>
+      <div class="div-bardash">
+       <a href="findjob.php"><span class="link-heading-find">Find Jobs</span></a> 
+       <a href="myjob.php"><span class="link-heading-my">My jobs</span></a> 
+      </div>
+    </div>
+        <div>
+            <?php 
+            echo " <div class='hello-fgg-welcome' > Hello ". $user['nom'] . " welcome back </div>";
+            ?>
         </div>
-        <a href="myprofile.php"><img src="Ellipse 2.png" alt="profile-logo"></a>
+        <a href="myprofile.php" class="link-ellipse"><img src="Ellipse 2.png" alt="profile-logo"></a>
     </div>    
 </body>
 </html>
