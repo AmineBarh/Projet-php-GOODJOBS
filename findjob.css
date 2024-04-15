@@ -25,7 +25,7 @@ body {
 }
 p, h2{
   font-family: "Poppins", sans-serif;
-  color: white;
+  color: #DBE2EF;
 }
 strong{
   color: #4fadc0;
@@ -38,7 +38,7 @@ h1{
     font-family: sans-serif;
     font-weight:900;
     font-style:normal;
-    color: #193948;
+    color: #DBE2EF;
 }
 .company-info {
     display: flex; 
@@ -50,7 +50,10 @@ h1{
     height: auto; 
     margin-right: 10px; 
 }
-.job button {
+.show-description{
+  text-decoration: none;
+
+    
     display: flex;
     align-items: center;
     justify-content: center;

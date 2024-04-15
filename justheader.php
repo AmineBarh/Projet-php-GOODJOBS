@@ -32,16 +32,15 @@
     <div class="main-container">
       <div class="link-ellipse"></div>
       <div class="div-bardash">
-       <a href="findjob.php"><span class="link-heading-find">Find Jobs</span></a> 
-       <a href="myjob.php"><span class="link-heading-my">My jobs</span></a> 
+        <a href="findjob.php"><span class="link-heading-find">Find Jobs</span></a> 
+        <a href="myjob.php"><span class="link-heading-my">My jobs</span></a>         
+        <a href="myprofile.php" class="link-ellipse"><img src="Ellipse 2.png" alt="profile-logo"></a>
       </div>
     </div>
         <div>
             <?php 
             echo " <div class='hello-fgg-welcome' > Hello ". $user['nom'] . " welcome back </div>";
             ?>
-        </div>
-        <a href="myprofile.php" class="link-ellipse"><img src="Ellipse 2.png" alt="profile-logo"></a>
-    </div>    
+    
 </body>
 </html>

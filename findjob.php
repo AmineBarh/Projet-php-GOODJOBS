@@ -34,13 +34,13 @@ if (count($alljobs) > 0) {
         echo "<div class='job'>";
         echo "<h2>{$job['jobname']}</h2>";
         echo "<div class='company-info'>";
-        echo "<p><strong>Company:</strong></p>";
+        echo "<p><strong>Company:    </strong></p>";
         echo "<img src='data:image/jpeg;base64,".base64_encode($job['image'])."' />";
         echo "<p>{$job['companyname']}</p>";
         echo "</div>";
         echo "<p><strong>Type:</strong> {$job['jobtype']}</p>";
         echo "<p><strong>Remote:</strong> {$job['remote']}</p>";
-        echo "<button class='show-description' data-desc='{$job['jobdesc']}'>See description</button>";
+        echo "<a href='description.php'> <button class='show-description' data-desc='{$job['jobdesc']}'>See description</button></a>"; 
         echo "</div>";
     }
 } else {
