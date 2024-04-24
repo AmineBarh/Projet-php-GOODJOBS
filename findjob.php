@@ -1,11 +1,11 @@
 <?php
+session_start();
 include "coonexion.php";
 
 try {
     $stmt = $cnx->query("SELECT jobname, companyname, jobtype, remote, jobdesc, image FROM jobsproject");
     $alljobs = $stmt->fetchAll();
 } catch (PDOException $e) {
-    // Handle database connection error
     echo "Error: " . $e->getMessage();
 }
 

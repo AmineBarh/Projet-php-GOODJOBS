@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Check if user is logged in
 if(!isset($_SESSION['user_id'])) {
     // Redirect to login page
@@ -17,16 +16,15 @@ $stmt = $cnx->prepare("SELECT * FROM webuser WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
 
-// Display user's profile information
 ?>
-
+<?php include "justheader.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="myprofile.css">
 </head>
 <body>
     <div class="profile-container">
@@ -37,8 +35,10 @@ $user = $stmt->fetch();
         <p><strong>name:</strong> <?php echo $user['nom']; ?></p>
         <p><strong>last name:</strong> <?php echo $user['prenom']; ?></p>
         <p><strong>You are a:</strong> <?php echo $user['type1']; ?></p>
-        <!-- Add more user details as needed -->
-        <a href="logout.php">Logout</a>
+        <a href="logout.php" class="logout">Logout</a>
+    </div>
+    <div class="createcv">
+    <a href="createcv.php?id=<?php echo $user_id; ?>">I want to create a CV</a>
     </div>
 </body>
 </html>

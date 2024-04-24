@@ -1,10 +1,8 @@
 <?php
 session_start();
-
+include "coonexion.php";
 if(isset($_POST['login'])) {
-    // Include connection file
-    include "coonexion.php";
-    
+      
     // Retrieve email and password from form
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -35,22 +33,34 @@ if(isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .login-container{
+            display: table;
+            margin: 100px auto 0;
+            padding: 10px;
+            border: 0.5px solid;
+            border-color: grey;
+            border-radius: 5px;
+            width: 40%;
+            max-width: 500;
+        }
+    </style>
 </head>
 <body>
     <div class="login-container">
-        <form action="" method="post" class="login-form">
-            <h2>Login</h2>
-            <div class="input-group">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <button type="submit" name="login">Login</button>
-        </form>
-    </div>
+    <form  method="post">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary" name="login">Submit</button>
+    </form>
+</div>
 </body>
 </html>

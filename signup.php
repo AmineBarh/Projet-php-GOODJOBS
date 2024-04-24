@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "coonexion.php";
 
 function checkEmail($cnx, $email) {

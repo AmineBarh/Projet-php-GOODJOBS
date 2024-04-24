@@ -5,6 +5,7 @@ session_start();
 $_SESSION = array();
 
 // Destroy the session
+session_unset();
 session_destroy();
 
 // Redirect the user to the login page after logout

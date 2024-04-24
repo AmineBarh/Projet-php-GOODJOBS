@@ -1,3 +1,15 @@
+<?php
+if(!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+include "coonexion.php";
+
+$user_id = $_SESSION['user_id'];
+$stmt = $cnx->prepare("SELECT * FROM webuser WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,34 +25,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php
-    session_start();
-
-    if(!isset($_SESSION['user_id'])) {
-        header('Location: login.php');
-        exit;
-    }
-    include "coonexion.php";
-
-    $user_id = $_SESSION['user_id'];
-    $stmt = $cnx->prepare("SELECT * FROM webuser WHERE id = ?");
-    $stmt->execute([$user_id]);
-    $user = $stmt->fetch();
-
-    ?>
-    <div id="bardash">
-    <div class="main-container">
-      <div class="link-ellipse"></div>
-      <div class="div-bardash">
-        <a href="findjob.php"><span class="link-heading-find">Find Jobs</span></a> 
-        <a href="myjob.php"><span class="link-heading-my">My jobs</span></a>         
-        <a href="myprofile.php" class="link-ellipse"><img src="Ellipse 2.png" alt="profile-logo"></a>
+<nav class="main-container">
+    <a href="myprofile.php">
+        <div class="link-ellipse">
+            <div class="link-ellipse-1">
+                <img src="Ellipse%202.png" alt="profile-pic">
+            </div>
+        </div>
+    </a>
+    <div class="group-1-1-wrapper">
+    <img
+          class="group-1-1"
+          loading="lazy"
+          alt=""
+          src="./public/group-1-1@2x.png"
+        />
       </div>
-    </div>
-        <div>
-            <?php 
-            echo " <div class='hello-fgg-welcome' > Hello ". $user['nom'] . " welcome back </div>";
+    <a href="myjob.php"><span class="my-jobs">My jobs</span></a>
+    <a href="findjob.php"><span class="find-jobs">Find Jobs</span></a>
+        <span class="hello-mister-welcome-back">
+            <?php
+                echo " <div class='hello-fgg-welcome' > Hello ". $user['nom'] . " welcome back </div>";
             ?>
-    
+        </span>
+</nav>
+
 </body>
 </html>
