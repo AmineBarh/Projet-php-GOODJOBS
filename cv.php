@@ -12,7 +12,7 @@ $user = $stmt->fetch();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [595,842]]);
+$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [200,350]]);
 $mpdf->AddPage("P");
 
 // Include CSS stylesheet
@@ -22,8 +22,8 @@ $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
 if (isset($_POST["submit"])) {
     $html = '<div class="container">';
     $html .= '<div class="hero">';
-    $html .= '<h1 class="name"><strong>'.$_POST["nom"] . '</strong>'.$_POST["prenom"] . '</h1>' .  '<span class="job-title">'.$_POST["job"] . '</span>';
-    $html .= '<span class="email">'.$_POST["email"] . '</span>';
+    $html .= '<h1 class="name"><strong>'.$user["nom"] . '</strong>'. $user["prenom"] . '</h1>' .  '<span class="job-title">'.$_POST["job"] . '</span>';
+    $html .= '<span class="email">'.$user["email"] . '</span>';
     $html .= '<h2 class="lead">'.$_POST["jobd"] . '</h2>';
     $html .= '</div>';
     $html .= '</div>';

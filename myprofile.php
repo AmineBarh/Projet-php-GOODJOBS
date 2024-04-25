@@ -38,7 +38,7 @@ $user = $stmt->fetch();
         <a href="logout.php" class="logout">Logout</a>
     </div>
     <div class="createcv">
-    <a href="createcv.php?id=<?php echo $user_id; ?>">I want to create a CV</a>
+    <a href="createcv.php?id=<?php echo $user_id; ?>"><p>I want to create a CV</p></a>
     </div>
 </body>
 </html>
