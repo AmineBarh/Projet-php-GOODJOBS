@@ -51,21 +51,21 @@ h1{
     margin-right: 10px; 
 }
 .show-description{
-  text-decoration: none;
-
-    
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
     width: calc(131.2515106201172 * var(--rpx)); 
     height: calc(14 * var(--rpx));
     margin: calc(47.99992752075195 * var(--rpx)) 0 0 calc(84.52001953125 * var(--rpx)); 
-    color: #171716;
+    color: #ffffff;
     font-weight: 500;
+    border: 0;
+    border-radius: 100px;
     background: #4793AF; 
-    border: 2px solid #171716; 
-    border-radius: 4px; 
   }
   
   .job button:hover {

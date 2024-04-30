@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "coonexion.php";
+var_dump($_SESSION);
 
 function checkEmail($cnx, $email) {
     $stmt = $cnx->prepare("SELECT * FROM webuser WHERE email = ?");
@@ -8,36 +9,56 @@ function checkEmail($cnx, $email) {
     return $stmt->fetch() !== false;
 }
 
-if(isset($_POST['save'])) {
+function checkPhone($cnx, $phone) {
+    $stmt = $cnx->prepare("SELECT * FROM webuser WHERE phone = ?");
+    $stmt->execute([$phone]);
+    return $stmt->fetch() !== false;
+}
+
+    if(isset($_POST['save'])) {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $phone = $_POST['phone'];
     $type = $_POST['type1'];
-
+    if ($_POST['type1'] == 'jobSeeker') {
+        $companyname = ''; // Set companyname to empty string for Job Seekers
+    } else {
+        $companyname=$_POST['companyname'];
+        var_dump($_SESSION); echo" <br>";
+        var_dump($_POST);
+    }
     // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Invalid email format');</script>";
-        exit;
+    }
+    // Validate phone format
+    if (!preg_match('/^[0-9]{8}$/', $phone)) {
+        echo "<script>alert('Invalid phone number format');</script>";
     }
 
     // Check if email already exists
     if (checkEmail($cnx, $email)) {
         echo "<script>alert('Email already exists');</script>";
-        exit;
+    }
+    // Check if phone already exists
+    if (checkPhone($cnx, $phone)) {
+        echo "<script>alert('Phone number already exists');</script>";
     }
 
-    // Hash the password
-    $hashedPassword = password_hash($pass, PASSWORD_DEFAULT);
+    // Hash the password securely
+    $hashedPassword = md5($pass);
 
-    // Insert user into database
-    $stmt = $cnx->prepare("INSERT INTO webuser (nom, prenom, email, pass, phone, type1) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$nom, $prenom, $email, $hashedPassword, $phone, $type]);
+    // Insert user into database using prepared statement
+    $stmt = $cnx->prepare("INSERT INTO webuser (nom, prenom, email, pass, phone, type1, companyname) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$nom, $prenom, $email, $hashedPassword, $phone, $type, $companyname]);
 
     // Redirect to dashboard
+    var_dump($_SESSION);
     $newUserID = $cnx->lastInsertId();
-    header("Location: dash.php?id=$newUserID");
+    echo "$newUserID";
+    header("Location: myprofile.php?id=$newUserID");
     exit;
 }
 ?>
@@ -54,51 +75,42 @@ if(isset($_POST['save'])) {
 
 <form id="multiStepForm" method="post">
     <div id="frm1">
-        Email: <input type="text" name="email" required> <br>
-        Password: <input type="text" name="pass" required> <br>
-        <p>By clicking Accept & Sign Up, you agree to <a href="#">LinkedIn's Terms of Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</p>
-        <button class="next1" onclick="showNextForm('frm2')">Accept & Sign Up</button>
-    </div>
-    
-    <div id="frm2" style="display: none;">
+        <input type="hidden" name="id">
+        Email: <input type="email" name="email" required> <br>
+        Password: <input type="password" name="pass" required> <br>
+        <p>By clicking Accept & Sign Up, you agree to <a href="#">GOODJOBS's Terms of Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</p>
+   
         Name: <input type="text" name="nom" required> <br>
         Last Name: <input type="text" name="prenom" required> <br>
-        <button onclick="showNextForm('frm3')">Continue</button>
-    </div>
-    
-    <div id="frm3" style="display: none;">
+   
         Phone number: <input type="text" name="phone" required> <br>
-        <button onclick="showNextForm('frm4')">Continue</button>
-    </div>
-    
-    <div id="frm4" style="display: none;">
+  
         <p>Type:</p>
-        <input type="radio" name="type1" id="jobSeeker" value="jobSeeker"> Job Seeker <br>
-        <input type="radio" name="type1" id="company" value="company"> Company <br>
-        <a href="myprofile.php"> <input type="button" value="Submit" onclick="submitForm()"></a>
+        <input type="radio" name="type1" id="jobSeeker" value="jobSeeker" onclick="radioFunction()"> Job Seeker <br>
+        <input type="radio" name="type1" id="company" value="company" onclick="radioFunction()"> Company <br>
+        <div id="companyNameInput" style="display:none">
+            Company name: <input type="text" name="companyname">
+        </div>
+        <input type="hidden" name="ncompanyname" id="hiddenCompanyInput">
+        <button type="submit" name="save">Submit</button>
     </div>
 </form>
 
 <script>
-    function showNextForm(nextFormId) {
-        document.getElementById(nextFormId).style.display = "block";
+function radioFunction() {
+    var jobSeekerRadio = document.getElementById("jobSeeker");
+    var companyNameInput = document.getElementById("companyNameInput");
+    var hiddenCompanyInput = document.getElementById("hiddenCompanyInput");
+    
+    if (jobSeekerRadio.checked) {
+        companyNameInput.style.display = "none";
+        hiddenCompanyInput.value = ''; // Set to empty string
+    } else {
+        companyNameInput.style.display = "block";
+        hiddenCompanyInput.value = ''; // Set to empty string initially
     }
-
-    function submitForm() {
-        document.getElementById("multiStepForm").submit();
-    }
+}
 </script>
 
-  <?php
-        // Récupérer les notes depuis la BdD :
-        // 1. Préparer la requête
-        $thisuser = "SELECT id, nom, prenom, email, pass, phone, type1 FROM webuser";
-        // 2. Lancer la requête
-        $himself = $cnx->query($thisuser);
-        // Extraire (fetch) toutes les lignes (enregistrement, rows)
-        $allusers = $himself -> fetchAll(); // Ceci est un tableau de tableaux associatifs
-    //    $all = count($allusers);
-    //    echo "Il y $all étudiants ";
-?>
 </body>
 </html>

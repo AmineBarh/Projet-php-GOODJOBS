@@ -1,5 +1,6 @@
 <?php
 session_start();
+var_dump($_SESSION);
 // Check if user is logged in
 if(!isset($_SESSION['user_id'])) {
     // Redirect to login page
@@ -30,11 +31,11 @@ $user = $stmt->fetch();
     <div class="profile-container">
         <h2>Welcome, <?php echo $user['nom']; ?>!</h2>
         <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
-        <p><strong>passowrd:</strong> <?php echo $user['pass']; ?></p>
-        <p><strong>Phone:</strong> <?php echo $user['phone']; ?></p>
+        <p><strong>Phone:</strong> +216 <?php echo $user['phone']; ?></p>
         <p><strong>name:</strong> <?php echo $user['nom']; ?></p>
         <p><strong>last name:</strong> <?php echo $user['prenom']; ?></p>
         <p><strong>You are a:</strong> <?php echo $user['type1']; ?></p>
+        <p><strong>You are a:</strong> <?php echo $user['companyname']; ?></p>
         <a href="logout.php" class="logout">Logout</a>
     </div>
     <div class="createcv">

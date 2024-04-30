@@ -25,6 +25,8 @@ if(isset($_POST['save'])) {
     // 1. Préparer la requête SQL
     $stmt = $cnx->prepare("INSERT INTO jobsproject (jobname, companyname, jobtype, remote, jobdesc, image) VALUES (?, ?, ?, ?, ?, ?)");
     $stmt->execute([$jobname, $companyname, $jobtype, $remote, $jobdesc, $image]);
+    $newJobID = $cnx->lastInsertId();
+    $_SESSION['jobid'] = $newJobID;
     header("Location: findjob.php");
     exit;
 }

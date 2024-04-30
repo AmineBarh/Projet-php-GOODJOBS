@@ -26,6 +26,9 @@ $user = $stmt->fetch();
 </head>
 <body>
 <nav class="main-container">
+<?php
+
+?>
     <a href="myprofile.php">
         <div class="link-ellipse">
             <div class="link-ellipse-1">
@@ -45,7 +48,12 @@ $user = $stmt->fetch();
     <a href="findjob.php"><span class="find-jobs">Find Jobs</span></a>
         <span class="hello-mister-welcome-back">
             <?php
-                echo " <div class='hello-fgg-welcome' > Hello ". $user['nom'] . " welcome back </div>";
+                if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'company') {
+                    echo '<a href="addjob.php" ><button class="postjob">Post a Job</button></a>';
+                    } 
+                    else {
+                        echo " <div class='hello-fgg-welcome' > Hello ". $user['nom']."</div>";
+                    }
             ?>
         </span>
 </nav>

@@ -1,12 +1,14 @@
 <?php
 session_start();
 include "coonexion.php";
+var_dump($_SESSION);
 
 try {
-    $stmt = $cnx->query("SELECT jobname, companyname, jobtype, remote, jobdesc, image FROM jobsproject");
+    $stmt = $cnx->query("SELECT jobid, jobname, companyname, jobtype, remote, jobdesc, image FROM jobsproject");
     $alljobs = $stmt->fetchAll();
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
+    
 }
 
 ?>
@@ -40,7 +42,7 @@ if (count($alljobs) > 0) {
         echo "</div>";
         echo "<p><strong>Type:</strong> {$job['jobtype']}</p>";
         echo "<p><strong>Remote:</strong> {$job['remote']}</p>";
-        echo "<a href='description.php'> <button class='show-description' data-desc='{$job['jobdesc']}'>See description</button></a>"; 
+        echo "<a href='description.php?id={$job['jobid']}'> <button class='show-description' data-desc='{$job['jobdesc']}'>See description</button></a>"; 
         echo "</div>";
     }
 } else {

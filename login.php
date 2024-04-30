@@ -1,30 +1,40 @@
 <?php
 session_start();
 include "coonexion.php";
-if(isset($_POST['login'])) {
-      
+
+if (isset($_POST['login'])) {
     // Retrieve email and password from form
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Prepare SQL statement to select user with given email and password
-    $stmt = $cnx->prepare("SELECT * FROM webuser WHERE email = ? AND pass = ?");
-    $stmt->execute([$email, $password]);
+    // Prepare SQL statement to select user with given email
+    $stmt = $cnx->prepare("SELECT * FROM webuser WHERE email = ?");
+    $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    // Check if user exists and password is correct
-    if($user) {
-        // User authenticated, store user information in session
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_email'] = $user['email'];
-        // Redirect to dashboard or home page
-        header('Location: findjob.php');
-        exit;
+    // Check if user exists
+    if ($user) {
+        // Verify password
+        if (md5($password) == $user['pass']) {
+            // User authenticated, store user information in session
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['jobcomp'] = $user['type1'];
+            $_SESSION['comp_name'] = $user['companyname'];
+            // Redirect to dashboard or home page
+           header('Location: findjob.php');
+           exit;
+        } else {
+            // Invalid password, display error message
+            echo "Invalid password. Please try again.";
+        }
     } else {
-        // Invalid credentials, display error message
-        echo "Invalid email or password. Please try again.";
+        // User not found, display error message
+        echo "User not found. Please try again.";
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +53,7 @@ if(isset($_POST['login'])) {
             border-color: grey;
             border-radius: 5px;
             width: 40%;
-            max-width: 500;
+            max-width: 500px;
         }
     </style>
 </head>
