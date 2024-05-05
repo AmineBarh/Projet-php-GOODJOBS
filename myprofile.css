@@ -1,22 +1,22 @@
-
 :root {
-    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
-      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
-      "Source Han Sans CN", sans-serif;
-  }
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
 
 body {
-    background-color: #14213d;
+  background-color: #14213d;
 }
 
 #profile-form {
-    backdrop-filter: blur(13px) saturate(156%);
-    -webkit-backdrop-filter: blur(13px) saturate(156%);
-    background-color: rgba(17, 25, 40, 0.13);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.125);
+  backdrop-filter: blur(13px) saturate(156%);
+  -webkit-backdrop-filter: blur(13px) saturate(156%);
+  background-color: rgba(17, 25, 40, 0.13);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }
+
 h2 {
   position: relative;
   color: #ffffff;
@@ -24,6 +24,7 @@ h2 {
   text-align: left;
   margin: 9px 0 0 50%;
 }
+
 p {
   position: relative;
   color: #ffffff;
@@ -34,6 +35,7 @@ p {
   line-height: 20.698px;
   text-align: left;
 }
+
 strong {
   position: relative;
   color: #ffffff;
@@ -43,22 +45,23 @@ strong {
   line-height: 20.698px;
   text-align: left;
 }
-.logout{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: absolute;
-    height: 30px;
-    top: 0;
-    left: 1212px;
-    color: #a3ffd6;
-    font-family: A Jannat LT, var(--default-font-family);
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 29.76px;
-    text-align: left;
-    white-space: nowrap;
+
+.logout,
+.modify,
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  color: #a3ffd6;
+  font-family: A Jannat LT, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 29.76px;
+  text-align: left;
+  white-space: nowrap;
 }
+
 html {
-	overflow-y: scroll; 
+  overflow-y: scroll;
 }

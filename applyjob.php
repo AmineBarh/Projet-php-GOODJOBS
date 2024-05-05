@@ -3,13 +3,14 @@ include "coonexion.php";
 session_start();
 $jobid = $_GET['id'];
 $id = $_SESSION['user_id'];
-$companyname = $_SESSION['comp_name'];
 
-$stmt = $cnx->prepare("SELECT jobdesc FROM jobsproject WHERE jobid = ?");
+
+$stmt = $cnx->prepare("SELECT * FROM jobsproject WHERE jobid = ?");
 $stmt->execute([$jobid]);
 $job = $stmt->fetch();
+$companyname = $job["companyname"];
 
-if(isset($_POST["apply"])) {
+if (isset($_POST["apply"])) {
     $cv_name = $_FILES['cv']['name'];
     $cv_tmp_name = $_FILES['cv']['tmp_name'];
     $cv_data = file_get_contents($cv_tmp_name);
@@ -25,8 +26,7 @@ if(isset($_POST["apply"])) {
     $stmt->bindParam(6, $resume_name);
     $stmt->bindParam(7, $resume_data, PDO::PARAM_LOB);
     $stmt->execute([$jobid, $id, $companyname, $cv_name, $cv_data, $resume_name, $resume_data]);
-    header("findjob.php");
-
+    header("Location: findjob.php");
 }
 ?>
 <!DOCTYPE html>
@@ -43,11 +43,10 @@ if(isset($_POST["apply"])) {
     <h5>You are applying for <?php echo "$companyname"; ?></h5>
     <form action="" method="post" enctype="multipart/form-data">
         <table>
-            <!-- Hidden inputs for jobid, id, companyname, and description -->
-            <input type="hidden" name="jobid" ><?php echo $jobid; ?>
-            <input type="hidden" name="id" ><?php echo $id; ?> 
-            <input type="hidden" name="companyname" ><?php echo $companyname; ?>
-            <input type="hidden" name="description" ><?php echo $job['jobdesc'] ?>
+            <input type="hidden" name="jobid"><?php echo $jobid; ?>
+            <input type="hidden" name="id"><?php echo $id; ?>
+            <input type="hidden" name="companyname"><?php echo $companyname; ?>
+            <input type="hidden" name="description"><?php echo $job['jobdesc'] ?>
 
             <tr>
                 <td><label for="cv">Upload CV:</label></td>

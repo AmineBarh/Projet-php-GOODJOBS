@@ -1,17 +1,14 @@
 <?php
 session_start();
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to login page
+
     header('Location: login.php');
     exit;
 }
 
-// Include connection file
 include "coonexion.php";
 
-// Retrieve user details from the database based on the user's session information
 $user_id = $_SESSION['user_id'];
 $stmt = $cnx->prepare("SELECT * FROM webuser WHERE id = ?");
 $stmt->execute([$user_id]);
@@ -30,19 +27,19 @@ $user = $stmt->fetch();
 </head>
 
 <body>
-    <div class="profile-container">
+    <div class="job">
         <h2>Welcome, <?php echo $user['nom']; ?>!</h2>
         <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
         <p><strong>Phone:</strong> +216 <?php echo $user['phone']; ?></p>
         <p><strong>name:</strong> <?php echo $user['nom']; ?></p>
         <p><strong>last name:</strong> <?php echo $user['prenom']; ?></p>
-        <p><strong>You are a:</strong> <?php echo $user['type1']; ?></p>
         <?php
         if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'Company') {
+            echo "<p><strong>You are a:</strong> <?php echo $user[type1]; ?></p>";
             echo "<p><strong>Named: </strong>" . $user['companyname'] . "</p>";
         }
         ?>
-        <a href="modif.php?id=<?php echo $user_id; ?>" class="modify">Modify</a>
+        <a href="modif.php?id=<?php echo $user_id; ?>" class="modify">Modify account</a>
         <a href="delete.php?id=<?php echo $user_id; ?>" class="delete">Delete account</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
