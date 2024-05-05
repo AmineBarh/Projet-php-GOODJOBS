@@ -17,7 +17,13 @@ body {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.125);
 }
-
+h2 {
+  position: relative;
+  color: #ffffff;
+  font-family: A Jannat LT, var(--default-font-family);
+  text-align: left;
+  margin: 9px 0 0 50%;
+}
 p {
   position: relative;
   color: #ffffff;
@@ -52,4 +58,7 @@ strong {
     line-height: 29.76px;
     text-align: left;
     white-space: nowrap;
+}
+html {
+	overflow-y: scroll; 
 }

@@ -1,6 +1,10 @@
 <?php
 session_start();
 include "coonexion.php";
+if(isset($_SESSION['user_id'])) {
+    header('Location: myprofile.php');
+    exit;
+}
 
 if (isset($_POST['login'])) {
     // Retrieve email and password from form
@@ -21,6 +25,8 @@ if (isset($_POST['login'])) {
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['jobcomp'] = $user['type1'];
             $_SESSION['comp_name'] = $user['companyname'];
+            $_SESSION['photo_id'] = $user['pic'];
+            echo "<script> var_dump($user) </script>";
             // Redirect to dashboard or home page
            header('Location: findjob.php');
            exit;
@@ -72,5 +78,6 @@ if (isset($_POST['login'])) {
         <button type="submit" class="btn btn-primary" name="login">Submit</button>
     </form>
 </div>
+Don't have an account? <a href="signup.php">Signup</a>
 </body>
 </html>

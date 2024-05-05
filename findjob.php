@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "coonexion.php";
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 try {
     $stmt = $cnx->query("SELECT jobid, jobname, companyname, jobtype, remote, jobdesc, image FROM jobsproject");
@@ -21,7 +21,7 @@ try {
     <link rel="stylesheet" href="findjob.css">
 </head>
 <body>
-<?php include "justheader.php"; ?> 
+<?php include "index.php"; ?> 
 
 <h1>JOB LISTINGS</h1>
 <div class="div1">
@@ -42,7 +42,7 @@ if (count($alljobs) > 0) {
         echo "</div>";
         echo "<p><strong>Type:</strong> {$job['jobtype']}</p>";
         echo "<p><strong>Remote:</strong> {$job['remote']}</p>";
-        echo "<a href='description.php?id={$job['jobid']}'> <button class='show-description' data-desc='{$job['jobdesc']}'>See description</button></a>"; 
+        echo "<a href='description.php?id={$job['jobid']}'> <button class='button' data-desc='{$job['jobdesc']}'>See description</button></a>"; 
         echo "</div>";
     }
 } else {

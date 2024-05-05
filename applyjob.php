@@ -25,7 +25,7 @@ if(isset($_POST["apply"])) {
     $stmt->bindParam(6, $resume_name);
     $stmt->bindParam(7, $resume_data, PDO::PARAM_LOB);
     $stmt->execute([$jobid, $id, $companyname, $cv_name, $cv_data, $resume_name, $resume_data]);
-    var_dump($_SESSION);
+    header("findjob.php");
 
 }
 ?>

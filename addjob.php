@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include "coonexion.php";
 
@@ -7,7 +8,7 @@ if(isset($_POST['save'])) {
     $jobname = $_POST['jobname'];
     
     // Récupérer la company du job
-    $companyname = $_POST['companyname'];
+    $companyname = $_SESSION["comp_name"];
 
     // Récupérer type du job
     $jobtype = $_POST['jobtype'];
@@ -19,7 +20,7 @@ if(isset($_POST['save'])) {
     $jobdesc = $_POST['jobdesc'];
 
     // Récupérer image du company
-    $image = file_get_contents($_FILES['companylogo']['tmp_name']); // Read the uploaded file
+    $image = $_SESSION['photo_id'];
     
     // Processus de sauvegarde dans la bdd en DEUX étapes :
     // 1. Préparer la requête SQL
@@ -32,6 +33,7 @@ if(isset($_POST['save'])) {
 }
 ?>
 
+<?php include "index.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +43,6 @@ if(isset($_POST['save'])) {
     <link rel="stylesheet" href="addjob.css">
 </head>
 <body>
-
 <div class="form-container">
     <form action="" method="post" class="addjobform" enctype="multipart/form-data">
         <div class="input-group">
@@ -49,12 +50,10 @@ if(isset($_POST['save'])) {
             <input type="text" name="jobname" id="jobname" required>
         </div>
         <div class="input-group">
-            <label for="companyname">Company name:</label>
-            <input type="text" name="companyname" id="companyname" required>
+            <input type="hidden" name="companyname" id="companyname" required>
         </div>
         <div class="input-group">
-            <label for="companylogo">Company logo:</label>
-            <input type="file" name="companylogo" id="companylogo" accept="image/*" required>
+            <input type="hidden" name="companylogo" id="companylogo" accept="image/*" required>
         </div>
         <div class="input-group">
             <label for="jobtype">Job type:</label>

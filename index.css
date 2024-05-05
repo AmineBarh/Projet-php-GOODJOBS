@@ -1,0 +1,218 @@
+.group-2-1 {
+    width: 121px;
+    flex: 1;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .group-2-1-wrapper {
+    height: 63px;
+    width: 212.3px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 0 6px;
+    box-sizing: border-box;
+  }
+  .find-jobs,
+  .my-jobs {
+    position: relative;
+    text-decoration: none;
+    line-height: 30px;
+    display: inline-block;
+    min-width: 98px;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+    color: #f9f7f7;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    line-height: 30px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-align: left;
+    z-index: 4;
+}
+  .my-jobs {
+    min-width: 79px;
+  }
+  .jobs-navigation {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gap-xl);
+  }
+  .jobs-navigation-wrapper {
+    width: 397.9px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 0 18.5px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .hello-amine {
+    position: relative;
+    line-height: 17px;
+    display: inline-block;
+    min-width: 95.1px;
+  }
+  .hello-amine-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 0 22.5px;
+  }
+  .image-icon {
+    height: 60px;
+    width: 60px;
+    position: relative;
+    border-radius: 35px;
+    overflow: hidden;
+    flex-shrink: 0;
+    object-fit: cover;
+
+  }
+  .frame-parent,
+  .nav {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .frame-parent {
+    width: 211px;
+    justify-content: flex-start;
+    gap: 45.9px;
+    font-size: var(--font-size-base);
+  }
+  .nav{
+    margin-top: -1vh;
+    
+    margin-right: -2vh;
+  }
+  .nav {
+    width: 100%;
+    position: relative;
+    background-color: #3f72af;
+    overflow: hidden;
+    justify-content: space-between;
+    padding: 0 32px 0 31px;
+    box-sizing: border-box;
+    line-height: normal;
+    letter-spacing: normal;
+    gap: var(--gap-xl);
+    text-align: left;
+    font-size: var(--font-size-xl);
+    color: var(--color-whitesmoke);
+    font-family: "Poppins", sans-serif;
+  }
+  .hello-mister-welcome-back {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 17px;
+    top: 25px;
+    left: 1567px;
+    color: #f9f7f7;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 5;
+  }
+  .postjob {
+    align-items: center;
+    background-color: #0A66C2;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: Poppins, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+  }
+  
+  .postjob:hover,
+  .postjob:focus { 
+    background-color: #16437E;
+    color: #ffffff;
+  }
+  
+  .postjob:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+  }
+  
+  .postjob:disabled { 
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+  }   
+  
+body {
+  --sb-track-color: #232E33;
+  --sb-thumb-color: #155e73;
+  --sb-size: 14px;
+}
+
+body::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+  
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
+  @media screen and (max-width: 925px) {
+    .nav {
+      flex-wrap: wrap;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .find-jobs,
+    .my-jobs {
+      font-size: var(--font-size-base);
+      line-height: 24px;
+    }
+    .jobs-navigation {
+      flex-wrap: wrap;
+    }
+  }

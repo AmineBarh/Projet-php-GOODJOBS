@@ -22,7 +22,7 @@ $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
 if (isset($_POST["submit"])) {
     $html = '<div class="container">';
     $html .= '<div class="hero">';
-    $html .= '<h1 class="name"><strong>' .$user["nom"] . '</strong>' . $user["prenom"] . '</h1>' .  '<span class="job-title">'.$_POST["job"] . '</span>';
+    $html .= '<h1 class="name"><strong>' .$user["nom"] . '</strong>' . ' ' . $user["prenom"] . '</h1>' .  '<span class="job-title">'.$_POST["job"] . '</span>';
     $html .= '<span class="email">'.$user["email"] . '</span>';
     $html .= '<h2 class="lead">'.$_POST["jobd"] . '</h2>';
     $html .= '</div>';

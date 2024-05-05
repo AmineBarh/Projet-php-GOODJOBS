@@ -1,6 +1,6 @@
 <?php
 session_start();
-var_dump($_SESSION);
+
 // Check if user is logged in
 if(!isset($_SESSION['user_id'])) {
     // Redirect to login page
@@ -16,9 +16,9 @@ $user_id = $_SESSION['user_id'];
 $stmt = $cnx->prepare("SELECT * FROM webuser WHERE id = ?");
 $stmt->execute([$user_id]);
 $user = $stmt->fetch();
-
 ?>
-<?php include "justheader.php"; ?>
+<?php include "index.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +35,7 @@ $user = $stmt->fetch();
         <p><strong>name:</strong> <?php echo $user['nom']; ?></p>
         <p><strong>last name:</strong> <?php echo $user['prenom']; ?></p>
         <p><strong>You are a:</strong> <?php echo $user['type1']; ?></p>
-        <p><strong>You are a:</strong> <?php echo $user['companyname']; ?></p>
+        <p><strong>Named: </strong> <?php echo $user['companyname']; ?></p>
         <a href="logout.php" class="logout">Logout</a>
     </div>
     <div class="createcv">
