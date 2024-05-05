@@ -2,7 +2,7 @@
 session_start();
 
 // Check if user is logged in
-if(!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
     // Redirect to login page
     header('Location: login.php');
     exit;
@@ -21,12 +21,14 @@ $user = $stmt->fetch();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="myprofile.css">
 </head>
+
 <body>
     <div class="profile-container">
         <h2>Welcome, <?php echo $user['nom']; ?>!</h2>
@@ -35,11 +37,20 @@ $user = $stmt->fetch();
         <p><strong>name:</strong> <?php echo $user['nom']; ?></p>
         <p><strong>last name:</strong> <?php echo $user['prenom']; ?></p>
         <p><strong>You are a:</strong> <?php echo $user['type1']; ?></p>
-        <p><strong>Named: </strong> <?php echo $user['companyname']; ?></p>
+        <?php
+        if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'Company') {
+            echo "<p><strong>Named: </strong>" . $user['companyname'] . "</p>";
+        }
+        ?>
+        <a href="modif.php?id=<?php echo $user_id; ?>" class="modify">Modify</a>
+        <a href="delete.php?id=<?php echo $user_id; ?>" class="delete">Delete account</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
     <div class="createcv">
-    <a href="createcv.php?id=<?php echo $user_id; ?>"><p>I want to create a CV</p></a>
+        <a href="createcv.php?id=<?php echo $user_id; ?>">
+            <p>I want to create a CV</p>
+        </a>
     </div>
 </body>
+
 </html>

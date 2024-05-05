@@ -10,7 +10,7 @@ body {
     background-color: #14213d;
 }
 
-.profile-container {
+#profile-form {
     backdrop-filter: blur(13px) saturate(156%);
     -webkit-backdrop-filter: blur(13px) saturate(156%);
     background-color: rgba(17, 25, 40, 0.13);
