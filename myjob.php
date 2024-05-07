@@ -19,6 +19,7 @@ if ($_SESSION['jobcomp'] == 'Company') {
             echo "<p><strong>Type:</strong> {$job['jobtype']}</p>";
             echo "<p><strong>Remote:</strong> {$job['remote']}</p>";
             echo "<a href='modifyjob.php?id={$job['jobid']}'> <button class='button'>Modify</button></a>";
+            echo "<a href='applied.php?id={$job['jobid']}'> <button class='button'>Applied</button></a>";
             echo "</div>";
         }
     } else {

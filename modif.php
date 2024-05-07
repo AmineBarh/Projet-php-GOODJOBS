@@ -35,6 +35,7 @@ $user = $res->fetch(); // This is ONE user
         <p><strong>Password : </strong><input type="password" name="pass" value=""></br>
         <p><strong>Phone : </strong><input type="text" name="phone" value="<?php echo $user['phone']; ?>"></br>
             <?php if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'Company') {
+                print_r($user['companyname']);
                 echo "Company Name : <input type='text' name='companyname' value=$user[companyname] ?></br>";
             } ?>
             <input type="hidden" name="id" value="<?php echo $user['id']; ?>"> <br>

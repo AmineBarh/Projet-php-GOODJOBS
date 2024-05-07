@@ -47,13 +47,25 @@ strong {
 }
 
 .logout,
-.modify,
-.delete {
+.modify{
   display: flex;
   align-items: center;
   justify-content: flex-end;
   position: relative;
   color: #a3ffd6;
+  font-family: A Jannat LT, var(--default-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 29.76px;
+  text-align: left;
+  white-space: nowrap;
+}
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  color: #ffa3a3;
   font-family: A Jannat LT, var(--default-font-family);
   font-size: 16px;
   font-weight: 700;

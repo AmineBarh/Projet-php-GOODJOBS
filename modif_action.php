@@ -18,7 +18,7 @@ $phone = $_GET['phone'];
 if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'Company') {
     $companyname = $_GET['companyname'];
     $stmt = $cnx->prepare("UPDATE apply SET companyname=? WHERE id = ?");
-    $stmt->execute([$companyname]);
+    $stmt->execute([$companyname, $id]);
 }
 
 // Prepare the SQL query for update
@@ -28,4 +28,3 @@ $stmt->execute([$nom, $prenom, $email, $pass, $phone, $type1, $companyname, $id]
 // Redirect to the main page
 header('Location: myprofile.php');
 exit;
-?>

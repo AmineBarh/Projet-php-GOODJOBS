@@ -7,4 +7,3 @@ $stmt = $cnx->prepare("DELETE FROM apply WHERE id = ? AND jobid= ?");
 $stmt->execute([$id, $jobid]);
 header('Location: myjob.php');
 exit;
-?>

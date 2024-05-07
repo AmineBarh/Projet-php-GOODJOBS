@@ -35,18 +35,22 @@ $user = $stmt->fetch();
         <p><strong>last name:</strong> <?php echo $user['prenom']; ?></p>
         <?php
         if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'Company') {
-            echo "<p><strong>You are a:</strong> <?php echo $user[type1]; ?></p>";
-            echo "<p><strong>Named: </strong>" . $user['companyname'] . "</p>";
+            echo "<p><strong>Company named: </strong>" . $user['companyname'] . "</p>";
         }
         ?>
         <a href="modif.php?id=<?php echo $user_id; ?>" class="modify">Modify account</a>
         <a href="delete.php?id=<?php echo $user_id; ?>" class="delete">Delete account</a>
         <a href="logout.php" class="logout">Logout</a>
     </div>
-    <div class="createcv">
-        <a href="createcv.php?id=<?php echo $user_id; ?>">
-            <p>I want to create a CV</p>
-        </a>
+    <?php
+    if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'jobSeeker') {
+        echo " <div class='createcv'>";
+        echo "<a href='createcv.php?id=<?php echo $user_id; ?>'>";
+        echo "<p>I want to create a CV</p>";
+        echo " </a>";
+    }
+    ?>
+
     </div>
 </body>
 
