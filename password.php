@@ -18,24 +18,16 @@ $user = $res->fetch(); // This is ONE user
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Modify a user</title>
+    <title>Modify Password</title>
     <link rel="stylesheet" href="myprofile.css">
 </head>
 <body>
     <h1>
-        <p>Modify user</p>
+        <p>Modify Password</p>
     </h1>
-    <form action="modif_action.php" method="GET">
+    <form action="password_action.php" method="POST">
         <input type="hidden" name="id" value="<?php echo $id; ?>"><br />
-        <p><strong>Nom : </strong><input type="text" name="nom" value="<?php echo $user['nom']; ?>">
-            </br>
-        <p><strong>Prenom : </strong><input type="text" name="prenom" value="<?php echo $user['prenom']; ?>"></br>
-        <p><strong>Email:</strong><input type="email" name="email" value="<?php echo $user['email']; ?>"></br>
-        
-        <p><strong>Phone : </strong><input type="text" name="phone" value="<?php echo $user['phone']; ?>"></br>
-            <?php if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'Company') {
-                echo "Company Name : <input type='text' name='companyname' value= '$user[companyname]' ?></br>";
-            } ?>
+        <p><strong>Password : </strong><input type="text" name="password"></br>
             <input type="hidden" name="id" value="<?php echo $user['id']; ?>"> <br>
             <input type="submit" value="Modify" name="modifier" class="button-17">
     </form>

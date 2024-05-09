@@ -1,3 +1,6 @@
+html {
+  overflow-y: scroll;
+}
 body{
     background-color: #f4f7f5;
 }
@@ -77,11 +80,25 @@ h1{
     color: #ffffff;
   }
 
+  a{
+    text-decoration: none;
+  }
+
 
 @media only screen and (max-width: 768px) {
     .job {
         width: 100%; 
     }
+}
+#buttond {
+  position: relative;
+  padding: 10px 22px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #af4747;
+  transition: all 0.2s ease;
 }
 .button {
   position: relative;

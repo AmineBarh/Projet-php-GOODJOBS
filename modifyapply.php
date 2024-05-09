@@ -20,6 +20,7 @@ $job = $res->fetch();
     <div class='job'>
         <form action='modifyapply_action.php' method='POST' enctype="multipart/form-data">
             <input type='hidden' name='id' value='<?php echo $job['id']; ?>'> 
+            <input type='hidden' name='jobid' value='<?php echo $job['jobid']; ?>'>
             <p>CV Name: <?php echo $job['cv_name']; ?></p>
             <input type="file" name="cv_file">
             <br>

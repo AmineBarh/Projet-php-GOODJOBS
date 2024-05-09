@@ -28,35 +28,35 @@ if (isset($_POST['save']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     $type = $_POST['type1'];
     $companyname = isset($_POST['companyname']) ? $_POST['companyname'] : '';
 
-    // Hash the password securely
+
     $hashedPassword = md5($pass);
 
-    // Validate email format
+ 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Invalid email format');</script>";
     }
-    // Validate phone format
+
     if (!preg_match('/^[0-9]{8}$/', $phone)) {
         echo "<script>alert('Invalid phone number format');</script>";
     }
 
-    // Check if email already exists
+   
     if (checkEmail($cnx, $email)) {
         echo "<script>alert('Email already exists');</script>";
     }
-    // Check if phone already exists
+ 
     if (checkPhone($cnx, $phone)) {
         echo "<script>alert('Phone number already exists');</script>";
     }
 
-    // check if an image file was uploaded
+
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $pic = file_get_contents($_FILES['image']['tmp_name']);
     } else {
         $pic = NULL;
     }
 
-    // Insert user into database
+  
     $stmt = $cnx->prepare("INSERT INTO webuser (nom, prenom, email, pass, phone, type1, companyname, pic) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bindParam(1, $nom);
     $stmt->bindParam(2, $prenom);
@@ -68,7 +68,7 @@ if (isset($_POST['save']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(8, $pic, PDO::PARAM_LOB);
     $stmt->execute();
 
-    // Redirect to dashboard
+   
     $newUserID = $cnx->lastInsertId();
     echo "$newUserID";
     header("Location: myprofile.php?id=$newUserID");

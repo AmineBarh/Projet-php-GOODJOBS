@@ -20,14 +20,17 @@ if ($_SESSION['jobcomp'] == 'Company') {
             echo "<p><strong>Remote:</strong> {$job['remote']}</p>";
             echo "<a href='modifyjob.php?id={$job['jobid']}'> <button class='button'>Modify</button></a>";
             echo "<a href='applied.php?id={$job['jobid']}'> <button class='button'>Applied</button></a>";
+            echo "<a href='deleted.php?id=" . htmlspecialchars($job['jobid']) . "'>
+            <button class='button' id='buttond' onclick=\"return confirm('Do you really want to delete this job?');\">Delete job</button>
+      </a>";
+
             echo "</div>";
         }
     } else {
         echo "<p>No jobs yet.</p>";
     }
 } else {
-    
-        $companyname = $_SESSION['comp_name'];
+    $companyname = $_SESSION['comp_name'];
     $id = $_SESSION['user_id'];
     $sql = "SELECT apply.*, jobsproject.jobname, jobsproject.companyname, jobsproject.jobdesc
     FROM apply
@@ -37,20 +40,20 @@ if ($_SESSION['jobcomp'] == 'Company') {
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt = $cnx->prepare("SELECT * FROM apply WHERE id = ?");
     $stmt->execute([$id]);
-    if (count($result) > 0) { 
-    $pdfData = $stmt->fetchColumn();
-    foreach ($result as $res) {
-        echo "<div class='job'>";
-        echo "<p>" . "<b>". $res["jobname"] . "</b>" . " - " . $res["companyname"]. " - ". $res["jobdesc"] . "</p>";
-        echo "<p>" . "$res[cv_name]" . "<br>" . "</p>";
-        echo '<object data="data:application/pdf;base64,' . base64_encode($res["cv_data"]) . '" type="application/pdf" style="height:200px;width:60%"></object><br>'; 
-        echo "<p>" . "$res[resume_name]" . "<br>". "</p>";
-        echo '<object data="data:application/pdf;base64,' . base64_encode($res["resume_data"]) . '" type="application/pdf" style="height:200px;width:60%"></object><br>'; 
-        echo "<a href='modifyapply.php?id=$res[id]&jobid=$res[jobid]'> <button class='button'>Modify Application</button></a>";
-        echo "<a href='deleteapply.php?id=$res[id]&jobid=$res[jobid]'> <button class='button'>Delete Application</button></a>";
-        echo "</div>";
-    }
-    } else {    
+    if (count($result) > 0) {
+        $pdfData = $stmt->fetchColumn();
+        foreach ($result as $res) {
+            echo "<div class='job'>";
+            echo "<p>" . "<b>" . $res["jobname"] . "</b>" . " - " . $res["companyname"] . " - " . $res["jobdesc"] . "</p>";
+            echo "<p>" . "$res[cv_name]" . "<br>" . "</p>";
+            echo '<object data="data:application/pdf;base64,' . base64_encode($res["cv_data"]) . '" type="application/pdf" style="height:200px;width:60%"></object><br>';
+            echo "<p>" . "$res[resume_name]" . "<br>" . "</p>";
+            echo '<object data="data:application/pdf;base64,' . base64_encode($res["resume_data"]) . '" type="application/pdf" style="height:200px;width:60%"></object><br>';
+            echo "<a href='modifyapply.php?id=$res[id]&jobid=$res[jobid]'> <button class='button'>Modify Application</button></a>";
+            echo "<a href='deleteapply.php?id=$res[id]&jobid=$res[jobid]'> <button class='button'>Delete Application</button></a>";
+            echo "</div>";
+        }
+    } else {
         echo "<p>" . "No applications yet" . "</p>";
     }
 }

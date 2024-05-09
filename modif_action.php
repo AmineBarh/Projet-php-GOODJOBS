@@ -22,8 +22,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'Company') {
 }
 
 // Prepare the SQL query for update
-$stmt = $cnx->prepare("UPDATE webuser SET nom=?, prenom=?, email=?, pass=?, phone=?, type1=?, companyname=? WHERE id = ?");
-$stmt->execute([$nom, $prenom, $email, $pass, $phone, $type1, $companyname, $id]);
+$stmt = $cnx->prepare("UPDATE webuser SET nom=?, prenom=?, email=?, phone=?,companyname=? WHERE id = ?");
+$stmt->execute([$nom, $prenom, $email, $phone, $companyname, $id]);
 
 // Redirect to the main page
 header('Location: myprofile.php');

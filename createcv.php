@@ -58,6 +58,7 @@ include "coonexion.php";
           <td><input type="text" name="exp2" id=""></td>
         </tr>
       </table>
+      <hr>
 
       <h2>Interests: </h2><br>
 
@@ -80,8 +81,8 @@ include "coonexion.php";
           <td><input type="text" name="int2" id=""></td>
         </tr>
       </table>
-
-      <h2>Projects: </h2><br>
+      <hr> 
+      <h2>Projects: </h2>
 
       <table>
         <tr>
@@ -107,7 +108,9 @@ include "coonexion.php";
         <th>Number 1 skill description:</th>
         <td><input type="text" name="dbsk1" id=""></td>
         </tr>
+        <td></td><td></td>
         <tr>
+          
           <th>Number 2 skill:</th>
           <td><input type="text" name="nbsk2" id=""></td>
         </tr>
@@ -119,6 +122,7 @@ include "coonexion.php";
           <th>Number 2 skill description: </th>
           <td><input type="text" name="dbsk2" id=""></td>
         </tr>
+        <td></td><td></td>
         <tr>
           <th>Number 3 skill:</th>
           <td><input type="text" name="nbsk3" id=""></td>
@@ -131,7 +135,9 @@ include "coonexion.php";
           <th>Number 3 skill description: </th>
           <td><input type="text" name="dbsk3" id=""></td>
         </tr>
+        <td></td><td></td>
       </table>
+      <hr> 
 
       <h2>Side Experiences: </h2> <br>
       <table>

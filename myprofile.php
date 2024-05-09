@@ -27,6 +27,9 @@ $user = $stmt->fetch();
 </head>
 
 <body>
+
+
+
     <div class="job">
         <h2>Welcome, <?php echo $user['nom']; ?>!</h2>
         <p><strong>Email:</strong> <?php echo $user['email']; ?></p>
@@ -39,8 +42,10 @@ $user = $stmt->fetch();
         }
         ?>
         <a href="modif.php?id=<?php echo $user_id; ?>" class="modify">Modify account</a>
-        <a href="delete.php?id=<?php echo $user_id; ?>" class="delete">Delete account</a>
+        <a href="password.php?id=<?php echo $user_id; ?>" class="pass">Modify Password</a>
         <a href="logout.php" class="logout">Logout</a>
+        <a href="delete.php?id=<?php echo htmlspecialchars($user_id); ?>" class="delete"
+            onclick="return confirm('Do you really want to delete this account?');">Delete account</a>
     </div>
     <?php
     if (isset($_SESSION['user_id']) && $_SESSION['jobcomp'] == 'jobSeeker') {
@@ -52,6 +57,7 @@ $user = $stmt->fetch();
     ?>
 
     </div>
+
 </body>
 
 </html>
