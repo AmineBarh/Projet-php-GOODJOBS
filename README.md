@@ -1,7 +1,7 @@
-# Job Portal Website
+# GOODJOBS Website
 
 ## Overview
-This project called "GOODJOBS" is a dynamic web application built using HTML, CSS, JavaScript, and PHP with PDO (PHP Data Objects) for interacting with the database. The purpose of the website is to provide a platform for jobseekers to apply for jobs and for companies to post, modify, and delete job listings, as well as view applicants for their postings.
+This project is a dynamic web application built using HTML, CSS, JavaScript, and PHP with PDO (PHP Data Objects) for interacting with the database. The purpose of the website is to provide a platform for jobseekers to apply for jobs and for companies to post, modify, and delete job listings, as well as view applicants for their postings.
 
 ## Features
 
@@ -17,6 +17,18 @@ This project called "GOODJOBS" is a dynamic web application built using HTML, CS
 - **Post Jobs**: Companies can post job listings.
 - **Modify/Delete Jobs**: Companies can modify or delete their job listings.
 - **View Applicants**: Companies can view applicants for their job postings.
+
+## Technologies Used
+
+- **HTML**: Used for creating the structure and content of the webpage.
+
+- **CSS**: Used for styling the webpage and making it visually appealing.
+
+- **JavaScript**: Used for form validation and handling form submission.
+
+- **PHP**: Used for server-side scripting and interacting with databases.
+
+- **mpdf**: Used for generating PDF document for CV.
 
 ## Installation
 1. Clone the repository:
