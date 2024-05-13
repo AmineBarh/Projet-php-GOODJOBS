@@ -24,7 +24,7 @@ This project called "GOODJOBS" is a dynamic web application built using HTML, CS
    git clone https://github.com/AmineBarh/projetphp.git
    ```
 2. Set up your web server and configure it to serve the project directory.
-3. Import the provided database schema (`database.sql`) into your MySQL database.
+3. Import the provided database schema (`aminproject.sql`) into your MySQL database.
    
 ## Usage
 1. Access the website through your web browser.
