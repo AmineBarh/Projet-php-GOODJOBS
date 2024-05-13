@@ -22,11 +22,12 @@ This project is a dynamic web application built using HTML, CSS, JavaScript, and
 
 - **HTML**: Used for creating the structure and content of the webpage.
 
+- **PHP**: Used for server-side scripting and interacting with databases.
+
 - **CSS**: Used for styling the webpage and making it visually appealing.
 
 - **JavaScript**: Used for form validation and handling form submission.
 
-- **PHP**: Used for server-side scripting and interacting with databases.
 
 - **mpdf**: Used for generating PDF document for CV.
 
